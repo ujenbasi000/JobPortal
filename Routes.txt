@@ -1,0 +1,23 @@
+Normal User:
+✅ Register
+✅ login
+✅ check for user authenticate
+✅ update user
+
+Company User:
+Register
+login
+check for user authenticate
+update user
+
+
+Projects:
+✅ Create 
+Update
+delete
+public/unpublic
+pin
+bookmark
+
+
+

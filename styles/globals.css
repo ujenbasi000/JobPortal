@@ -1,0 +1,155 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .link-button {
+    @apply font-semibold text-xl text-blue hover:text-logoColor block;
+  }
+  .input-field {
+    @apply text-xl block px-6 py-4 rounded-2xl boxShadow outline-none outline-2 focus:outline-blue;
+  }
+  .btn-rounded {
+    @apply rounded-full p-4 bg-blue outline-darkBlue;
+  }
+  .btn-primary {
+    @apply rounded-md block w-full px-4 py-3 font-medium text-xl bg-lightBlue text-blue outline-none transition duration-200 hover:bg-blue hover:text-white;
+  }
+  .btn-secondary {
+    @apply rounded-md block w-full px-4 py-2 font-normal text-base bg-blue text-whiteColor hover:bg-darkBlue transition duration-200;
+  }
+  .secondary-input {
+    @apply rounded-md border outline-1 border-border bg-whiteColor outline-blue px-4 py-2 w-full block;
+  }
+}
+
+.boxShadow {
+  box-shadow: #0000001a 0px 5px 16px;
+}
+
+.card-three {
+  width: calc(33.3333% - 1.3334em);
+}
+
+* {
+  font-family: "Inter";
+  /* font-family: "Poppins"; */
+}
+
+.underline-color-parent {
+  position: relative;
+}
+
+.underline-color {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  width: 100%;
+  height: 8px;
+}
+
+.card:nth-child(odd) .card-border {
+  border-color: rgb(153, 0, 239);
+}
+.card:nth-child(even) .card-border {
+  border-color: rgb(55, 112, 255);
+}
+
+.shape-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  height: 100px;
+  z-index: -1;
+}
+
+.shape {
+  position: absolute;
+}
+
+.s1 {
+  top: -192px;
+  left: 467px;
+  width: 100px;
+  height: 100px;
+}
+.s2 {
+  top: -257px;
+  left: -281px;
+  width: 100px;
+  height: 100px;
+}
+.s3 {
+  top: -160px;
+  left: 531px;
+  width: 100px;
+  height: 100px;
+}
+.s4 {
+  top: -141px;
+  left: -523px;
+  width: 100px;
+  height: 100px;
+}
+.s5 {
+  top: 173px;
+  left: -266px;
+  width: 100px;
+  height: 100px;
+}
+.s6 {
+  top: 154px;
+  left: 118px;
+  width: 60px;
+  height: 60px;
+}
+.s7 {
+  top: -28px;
+  left: 467px;
+  width: 100px;
+  height: 100px;
+}
+.s8 {
+  top: 6px;
+  left: -249px;
+  width: 40px;
+  height: 40px;
+}
+.s9 {
+  top: 275px;
+  left: -562px;
+  width: 100px;
+  height: 100px;
+}
+
+.animated-up-down {
+  animation: animate-up-down 7s infinite linear alternate-reverse;
+}
+
+.animated-circle {
+  animation: animate-circle 7s infinite linear;
+}
+
+.loading {
+  animation: animate-circle 2s infinite linear;
+}
+
+@keyframes animate-circle {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes animate-up-down {
+  0% {
+    transform: translateY(-45px);
+  }
+  100% {
+    transform: translateY(45px);
+  }
+}

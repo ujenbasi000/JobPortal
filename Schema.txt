@@ -1,0 +1,120 @@
+UI Inspiration - devfolio
+job/internships
+hackathons/meetups
+developer roadmap
+college recommendation
+
+
+****NORMAL USER****
+	about: {
+	firstname
+	lastname
+	gender
+	bio
+	email
+	profile
+	username
+	},
+	education: {
+	formal_education: true/false,
+	degree_type
+	education institution
+	field_of_study
+	month_of_graduation
+	year_of_graduation
+	},
+	experience: {
+	top_skills
+	describes
+	resume: file
+	has_work_experience: true/false,
+	work_experience [
+	{
+		employer,
+		role
+		from: {
+			month,
+			year
+		}
+		to: {
+			month,
+			year
+		},
+		description
+	]
+	links
+	contact: {
+	email
+	verified
+	number
+	city
+	emergency_contact {
+		contact_name
+		contact_number
+	}
+	}
+
+
+****PROJECTS****
+	name
+	tagline
+	problem
+	challenges
+	technologies
+	links
+	dmeo_video
+	cover_image
+	images
+	logo
+	platform
+
+
+*****Company****
+	name
+	cover_image
+	about
+	profile_image
+	all_job_offers
+	location
+	size
+	social
+	founded
+	candidates
+	bookmark candidate
+	candidate notification
+
+
+****Company post****
+	cover_image
+	about
+	location
+	title
+	deadline
+	num_of_employee
+	tags
+	theme
+	faqs
+	links: {
+		website
+		twitter
+		linkedin
+		discord
+		instagram
+		number
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
