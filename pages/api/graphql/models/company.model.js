@@ -7,6 +7,11 @@ const { Schema, model: Model } = mongoose;
 
 const CompanySchema = new Schema(
   {
+    modelType: {
+      type: String,
+      immutable: true,
+      default: "company",
+    },
     name: {
       type: String,
       required: true,

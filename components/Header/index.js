@@ -1,13 +1,14 @@
 import Link from "next/link";
+import useContextHook from "../../pages/hooks/useContext";
 
 const Header = () => {
-  const hasLoggedIn = false;
+  const { hasLoggedIn } = useContextHook();
 
   return (
     <header className="w-full">
       <div className="container mx-auto flex items-center justify-between py-6 px-2">
         <div className="">
-          <a href="https://devfolio.co/home/">
+          <a href="http://localhost:3000">
             <h1 className="text-4xl font-bold text-logoColor">Devfolio</h1>
           </a>
         </div>
@@ -30,12 +31,11 @@ const Header = () => {
             </li>
           </ul>
           <ul className="flex gap-4 items-center">
-            <li>
-              <button className="link-button">Organize a Hackathon</button>
-            </li>
             {hasLoggedIn ? (
               <li>
-                <button className="link-button">Go to dashboard</button>
+                <button className="link-button">
+                  <Link href="/dashboard">Go to dashboard</Link>
+                </button>
               </li>
             ) : (
               <li>

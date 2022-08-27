@@ -1,3 +1,5 @@
+import { format } from "date-fns";
+
 const Card = ({ color, detail }) => {
   return (
     <div className="card rounded-md border border-border boxShadow card-three hover:-translate-y-1 transition duration-200">
@@ -6,9 +8,21 @@ const Card = ({ color, detail }) => {
         style={{ borderColor: color }}
       >
         <div>
-          <h1 className="text-4xl mb-4 font-semibold">{detail.title}</h1>
+          <h1 className="text-3xl mb-4 font-semibold text-clip break-word">
+            {detail.title}
+          </h1>
           <p className="text-lg text-textcolor font-medium">
-            Apply before {detail.deadline}
+            Apply before{" "}
+            <span className="font-semibold">
+              {format(
+                new Date(
+                  +detail.deadline.split("-")[0],
+                  +detail.deadline.split("-")[1],
+                  +detail.deadline.split("-")[2]
+                ),
+                "LLLL dd yyyy"
+              )}
+            </span>
           </p>
         </div>
 

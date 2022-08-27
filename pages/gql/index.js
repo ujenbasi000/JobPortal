@@ -35,9 +35,40 @@ const LOGIN_NORMAL_ACCOUNT = gql`
   }
 `;
 
+const GET_LOGGEDIN_USER = gql`
+  query GET_LOGGEDIN_USER {
+    getUser {
+      message
+      success
+      user {
+        name
+        username
+      }
+    }
+  }
+`;
+
+const GET_ALL_JOB_OFFERS = gql`
+  query GET_ALL_JOB_OFFERS($input: LimitSkipInput!) {
+    getAllPosts(input: $input) {
+      message
+      success
+      posts {
+        title
+        deadline
+        type
+      }
+    }
+  }
+`;
+
 module.exports = {
   CREATE_BUSINESS_ACCOUNT,
   CREATE_NORMAL_ACCOUNT,
   LOGIN_BUSINESS_ACCOUNT,
   LOGIN_NORMAL_ACCOUNT,
+
+  GET_LOGGEDIN_USER,
+
+  GET_ALL_JOB_OFFERS,
 };

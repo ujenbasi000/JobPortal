@@ -22,10 +22,20 @@
   .secondary-input {
     @apply rounded-md border outline-1 border-border bg-whiteColor outline-blue px-4 py-2 w-full block;
   }
+  .dashboard-header-li-active {
+    @apply rounded-b-md bg-blue text-whiteColor font-semibold text-sm tracking-widest py-8 px-3;
+  }
+  .dashboard-header-li {
+    @apply rounded-b-md hover:bg-lightBlue bg-white text-black transition duration-200 font-semibold text-sm tracking-widest py-8 px-3;
+  }
 }
 
 .boxShadow {
   box-shadow: #0000001a 0px 5px 16px;
+}
+
+.lightBoxShadow {
+  box-shadow: #bfbfbf1a 1px 4px 10px;
 }
 
 .card-three {

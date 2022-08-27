@@ -2,6 +2,7 @@ import Link from "next/link";
 import Card from "./Card";
 
 const Offers = ({ type = "jobs", details, link = "/", color }) => {
+  console.log({ details });
   return (
     <section className="w-full">
       <div className="py-16 container mx-auto">
@@ -10,7 +11,7 @@ const Offers = ({ type = "jobs", details, link = "/", color }) => {
         </h1>
 
         <section className="flex gap-6 w-10/12 mx-auto ">
-          {details.map((detail) => (
+          {details?.map((detail) => (
             <Card key={detail._id} detail={detail} />
           ))}
         </section>

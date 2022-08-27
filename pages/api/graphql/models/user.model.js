@@ -7,6 +7,11 @@ const { Schema, model: Model } = mongoose;
 
 const UserSchema = new Schema(
   {
+    modelType: {
+      type: String,
+      immutable: true,
+      default: "normal",
+    },
     name: {
       type: String,
       required: true,

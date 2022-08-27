@@ -23,7 +23,7 @@ const UserResolver = {
             const token = newUser.createToken();
 
             if (token) {
-              ctx.res.cookie("token", token, { maxAge: 900000 });
+              ctx.res.cookie("token", token, { maxAge: 8.64e7 });
               return {
                 message: MESSAGES.register,
                 success: true,
@@ -62,7 +62,7 @@ const UserResolver = {
             const token = userExist.createToken();
 
             if (token) {
-              ctx.res.cookie("token", token, { maxAge: 900000 });
+              ctx.res.cookie("token", token, { maxAge: 8.64e7 });
               return {
                 message: MESSAGES.login,
                 success: true,

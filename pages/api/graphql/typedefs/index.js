@@ -26,6 +26,7 @@ const typeDefs = gql`
     company: CompanyUser
     faqs: FAQ
     links: Links
+    type: String
   }
 
   type CompanyUser {
