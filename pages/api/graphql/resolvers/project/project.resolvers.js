@@ -24,6 +24,7 @@ const ProjectResolvers = {
         return {
           message: MESSAGES.projectCreated,
           success: true,
+          data: newProject._id,
         };
       }
     } catch (err) {

@@ -7,6 +7,6 @@ const nextConfig = {
 module.exports = nextConfig;
 module.exports = {
   images: {
-    domains: ["assets.devfolio.co"],
+    domains: ["assets.devfolio.co", "www.freecodecamp.org"],
   },
 };

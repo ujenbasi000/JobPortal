@@ -33,6 +33,25 @@ const JobPostQuery = {
       };
     }
   },
+  getSingleJobOffer: async (_, { input }) => {
+    const { slug } = input;
+    if (slug) {
+      const post = await JobPost.findOne({ slug }).populate({
+        path: "company",
+        model: "Companies",
+      });
+      return {
+        success: true,
+        message: MESSAGES.foundPosts,
+        post,
+      };
+    } else {
+      return {
+        message: "Slug not provided",
+        success: false,
+      };
+    }
+  },
 };
 
 module.exports = JobPostQuery;

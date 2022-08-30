@@ -15,7 +15,11 @@ const JobPostResolvers = {
           success: false,
         };
       } else {
-        const newPost = await JobPost.create({ ...input, company: id });
+        const newPost = await JobPost.create({
+          ...input,
+          slug: input.title.toLowerCase().replaceAll(/\W/g, "-").trim(),
+          company: id,
+        });
         user.all_job_offers.push(newPost._id);
         await user.save();
         return {

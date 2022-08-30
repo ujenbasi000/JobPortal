@@ -131,7 +131,11 @@ const UserSchema = new Schema(
 );
 
 UserSchema.methods.createToken = function () {
-  const token = jwt.sign(this._id.toString(), process.env.TOKEN_SECRET);
+  // const token = jwt.sign(this._id.toString(), process.env.TOKEN_SECRET);
+  const token = jwt.sign(
+    { modelType: "normal", _id: this._id.toString() },
+    process.env.TOKEN_SECRET
+  );
   console.log("New Token: ", token);
   return token;
 };

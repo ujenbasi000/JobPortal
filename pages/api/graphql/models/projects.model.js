@@ -9,11 +9,9 @@ const ProjectSchema = new Schema(
       type: String,
       required: true,
     },
-    tagline: [
-      {
-        type: String,
-      },
-    ],
+    tagline: {
+      type: String,
+    },
     problem: {
       type: String,
     },

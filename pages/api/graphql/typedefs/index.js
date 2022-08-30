@@ -8,21 +8,33 @@ const typeDefs = gql`
     message: String!
   }
 
-  type PostResponse {
+  type PostsResponse {
     success: Boolean!
     message: String!
     posts: [Post!]
   }
+  type PostResponse {
+    success: Boolean!
+    message: String!
+    post: Post!
+  }
+
+  type CreateProjectResponse {
+    success: Boolean!
+    message: String!
+    data: ID!
+  }
 
   type Post {
-    _id: ID!
+    _id: ID
+    title: String
+    slug: String
     cover_image: File
     about: String
     location: String
-    title: String!
     deadline: String
     num_of_employee: Int
-    tags: [String!]
+    tags: [String]
     company: CompanyUser
     faqs: FAQ
     links: Links
@@ -30,7 +42,7 @@ const typeDefs = gql`
   }
 
   type CompanyUser {
-    _id: ID!
+    _id: ID
     name: String
     username: String
     email: String
@@ -38,12 +50,58 @@ const typeDefs = gql`
     cover_image: File
     about: String
     profile_image: File
-    all_job_offers: [Post!]
+    all_job_offers: [Post]
     location: String
     company_size: Int
     social: [String]
     founded: String
     contact: String
+
+    modelType: String
+  }
+
+  type User {
+    _id: ID
+    name: String
+    verified: Boolean
+    gender: String
+    bio: String
+    email: String
+    profile: File
+    username: String
+
+    formal_education: String
+    degree_type: String
+    university: String
+    field_of_study: String
+    month_of_graduation: String
+    year_of_graduation: String
+
+    top_skills: [String]
+    describes: String
+    resume: File
+    has_work_experience: Boolean
+    work_experience: [WorkExperience]
+
+    contact_name: String
+    contact_number: String
+
+    modelType: String
+  }
+
+  type Project {
+    _id: ID
+    name: String
+    tagline: String
+    problem: String
+    challenges: String
+    technologies: [String!]
+    links: [String!]
+    demo_video: File
+    cover_image: File
+    images: File
+    logo: File
+    platform: [String]
   }
 
   type Links {
@@ -65,8 +123,8 @@ const typeDefs = gql`
   }
 
   type FAQ {
-    question: String!
-    answer: String!
+    question: String
+    answer: String
   }
 
   input FAQInput {
@@ -77,12 +135,23 @@ const typeDefs = gql`
   type UserResponse {
     success: Boolean!
     message: String!
-    user: User!
+    user: User
+    companyUser: CompanyUser
+  }
+  type ProjectResponse {
+    success: Boolean!
+    message: String!
+    projects: [Project]
+  }
+  type SingleProjectResponse {
+    success: Boolean!
+    message: String!
+    data: Project
   }
 
   type Date {
-    month: String!
-    year: String!
+    month: String
+    year: String
   }
 
   input DateInput {
@@ -91,40 +160,13 @@ const typeDefs = gql`
   }
 
   type File {
-    url: String!
-    cloud_id: String!
+    url: String
+    cloud_id: String
   }
 
   input FileInput {
     url: String!
     cloud_id: String!
-  }
-
-  type User {
-    _id: ID!
-    name: String
-    verified: Boolean
-    gender: String
-    bio: String
-    email: String
-    profile: File
-    username: String
-
-    formal_education: String
-    degree_type: String
-    university: String
-    field_of_study: String
-    month_of_graduation: String
-    year_of_graduation: String
-
-    top_skills: [String!]
-    describes: String
-    resume: File
-    has_work_experience: Boolean
-    work_experience: [WorkExperience]
-
-    contact_name: String
-    contact_number: String
   }
 
   input UserInput {
@@ -158,7 +200,7 @@ const typeDefs = gql`
     role: String
     from: Date
     to: Date
-    description: String!
+    description: String
   }
 
   input WorkExperienceInput {
@@ -183,15 +225,15 @@ const typeDefs = gql`
   input CreateProjectInput {
     name: String!
     tagline: [String!]
-    problem: String!
+    problem: String
     challenges: String
-    technologies: [String!]!
+    technologies: [String!]
     links: [String!]
-    demo_video: FileInput!
-    cover_image: FileInput!
-    images: [FileInput!]!
-    logo: FileInput!
-    platform: [String!]!
+    demo_video: FileInput
+    cover_image: FileInput
+    images: [FileInput!]
+    logo: FileInput
+    platform: [String!]
   }
 
   input RegisterCompanyInput {
@@ -223,9 +265,20 @@ const typeDefs = gql`
     links: LinksInput
   }
 
+  input SingleJobOfferInput {
+    slug: String!
+  }
+
+  input SingleProjectInput {
+    id: ID!
+  }
+
   type Query {
     getUser: UserResponse!
-    getAllPosts(input: LimitSkipInput!): PostResponse!
+    getAllPosts(input: LimitSkipInput!): PostsResponse!
+    getSingleJobOffer(input: SingleJobOfferInput!): PostResponse!
+    getAllProjects: ProjectResponse!
+    getSingleProject(input: SingleProjectInput!): SingleProjectResponse!
   }
 
   type Mutation {
@@ -234,7 +287,7 @@ const typeDefs = gql`
     loginUser(input: LoginInput!): BooleanResponse!
     updateUser(input: UserInput!): BooleanResponse!
 
-    createProject(input: CreateProjectInput!): BooleanResponse!
+    createProject(input: CreateProjectInput!): CreateProjectResponse!
 
     # @company_owner
     registerOwner(input: RegisterCompanyInput!): BooleanResponse!

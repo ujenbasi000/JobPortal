@@ -1,18 +1,17 @@
-import Header from "../components/Header";
-import Offers from "../components/Home/Offers";
-import Section1 from "../components/Home/Section1";
-import { GET_ALL_JOB_OFFERS, GET_LOGGEDIN_USER } from "./gql";
-import client from "./config/apollo";
-import useContextHook from "./hooks/useContext";
 import { useEffect } from "react";
+import Header from "../components/Header";
+import JobInternshipsBody from "../components/JobInternships";
+import Search from "../components/Search";
+import client from "./config/apollo";
 import { useQuery } from "@apollo/client";
-import { toast } from "react-toastify";
+import { GET_ALL_JOB_OFFERS, GET_LOGGEDIN_USER } from "./gql";
+import useContextHook from "./hooks/useContext";
 import Head from "next/head";
 
-export default function Home({ user, hasLoggedIn }) {
+const JobInternships = ({ user, hasLoggedIn }) => {
   const { setUser, setHasLoggedIn } = useContextHook();
-  const { data, loading } = useQuery(GET_ALL_JOB_OFFERS, {
-    variables: { input: { limit: 3, skip: 0 } },
+  const { data } = useQuery(GET_ALL_JOB_OFFERS, {
+    variables: { input: { limit: 10, skip: 0 } },
   });
 
   useEffect(() => {
@@ -23,24 +22,20 @@ export default function Home({ user, hasLoggedIn }) {
   return (
     <>
       <Head>
-        <title>Home | JobPortal</title>
+        <title>Job - Internships | JobPortal</title>
       </Head>
-      <Header />
-      <Section1 />
-      <Offers
-        type="jobs"
-        loading={loading}
-        details={data?.getAllPosts?.posts}
-        color={"rgb(55, 112, 255)"}
-      />
-      {/* <Offers
-        type="hackathon"
-        details={hackathon_offers}
-        color={"rgb(88, 209, 189)"}
-      /> */}
+      <section>
+        <Header />
+        <div className="container py-16 px-32 mx-auto">
+          <Search />
+          <JobInternshipsBody data={data?.getAllPosts?.posts} />
+        </div>
+      </section>
     </>
   );
-}
+};
+
+export default JobInternships;
 
 export const getServerSideProps = async (context) => {
   const token = context.req.cookies.token;

@@ -28,6 +28,16 @@
   .dashboard-header-li {
     @apply rounded-b-md hover:bg-lightBlue bg-white text-black transition duration-200 font-semibold text-sm tracking-widest py-8 px-3;
   }
+  .btn-rounded-secondary {
+    @apply rounded-full p-4 bg-lightBlue text-blue border border-transparent hover:border-darkBlue;
+  }
+}
+
+.two-row-grid {
+  display: grid;
+  gap: 24px;
+  grid-auto-rows: 1fr;
+  grid-template-columns: 1fr 1fr;
 }
 
 .boxShadow {
@@ -161,5 +171,46 @@
   }
   100% {
     transform: translateY(45px);
+  }
+}
+
+.add_a_project {
+  background-image: url("../public/download.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.animate-step-1 {
+  animation: animate_step1 1s ease;
+  display: flex;
+  opacity: 1;
+  height: 241.5px;
+  width: 30rem;
+}
+
+@keyframes animate_step1 {
+  0% {
+    width: 0;
+    display: none;
+    opacity: 0;
+    height: 241.5px;
+  }
+
+  60% {
+    width: 30rem;
+    display: none;
+    opacity: 0;
+  }
+
+  100% {
+    display: flex;
+    opacity: 1;
+    height: 241.5px;
   }
 }

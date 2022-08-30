@@ -16,6 +16,10 @@ const JobPostSchema = new Schema(
       type: String,
       required: true,
     },
+    slug: {
+      type: String,
+      required: true,
+    },
     deadline: {
       type: String,
       required: true,

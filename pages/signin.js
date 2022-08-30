@@ -41,8 +41,7 @@ const Signup = () => {
       }
       // async code ...
       setLoading(true);
-      await loginBusinessAccount(companyUser, businessGraphql, toast);
-      router.push("/");
+      await loginBusinessAccount(companyUser, businessGraphql, toast, router);
       setLoading(false);
     }
   };
@@ -65,8 +64,7 @@ const Signup = () => {
       }
       // async code ...
       setLoading(true);
-      await loginNormalAccount(normalUser, normalGraphql, toast);
-      router.push("/");
+      await loginNormalAccount(normalUser, normalGraphql, toast, router);
       setLoading(false);
     }
   };

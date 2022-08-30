@@ -49,7 +49,7 @@ export const getServerSideProps = async (context) => {
     if (data && data.getUser && data.getUser.success) {
       return {
         props: {
-          user: data.getUser.user,
+          user: data.getUser.user || data.getUser.companyUser,
           hasLoggedIn: true,
         },
       };

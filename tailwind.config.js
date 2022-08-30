@@ -18,6 +18,7 @@ module.exports = {
         yellow: "rgb(252, 185, 0)",
         purple: "rgb(153, 0, 239)",
         green: "rgb(1, 231, 122)",
+        lightGreen: "rgba(228, 244, 240, 0.5)",
         whiteColor: "#f5f7f7",
       },
     },

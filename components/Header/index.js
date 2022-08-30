@@ -15,9 +15,11 @@ const Header = () => {
         <div className="flex gap-16 items-center">
           <ul className="flex gap-6 items-center">
             <li>
-              <button className="text-xl font-normal text-textcolor hover:text-black">
-                Job / Internship
-              </button>
+              <Link href="/job-internships">
+                <button className="text-xl font-normal text-textcolor hover:text-black">
+                  Job / Internship
+                </button>
+              </Link>
             </li>
             <li>
               <button className="text-xl font-normal text-textcolor hover:text-black">
