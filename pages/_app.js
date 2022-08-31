@@ -5,17 +5,22 @@ import client from "./config/apollo";
 import { ApolloProvider } from "@apollo/client";
 import Context from "./utils/context";
 import { useState } from "react";
+import NextNProgress from "nextjs-progressbar";
 
 function MyApp({ Component, pageProps }) {
   const [headerMenu, setHeaderMenu] = useState(false);
 
   return (
-    <ApolloProvider client={client}>
-      <Context data={{ headerMenu, setHeaderMenu }}>
-        <ToastContainer limit={1} autoClose={2000} />
-        <Component {...pageProps} />
-      </Context>
-    </ApolloProvider>
+    <>
+      <NextNProgress />
+
+      <ApolloProvider client={client}>
+        <Context data={{ headerMenu, setHeaderMenu }}>
+          <ToastContainer limit={1} autoClose={2000} />
+          <Component {...pageProps} />
+        </Context>
+      </ApolloProvider>
+    </>
   );
 }
 

@@ -4,6 +4,7 @@ import { GET_LOGGEDIN_USER } from "../gql";
 import client from "../config/apollo";
 import useContextHook from "../hooks/useContext";
 import DashboardBody from "../../components/Dashboard/DashboardBody";
+import Head from "next/head";
 
 const Dashboard = ({ hasLoggedIn, user }) => {
   const { setUser, setHasLoggedIn } = useContextHook();
@@ -14,10 +15,15 @@ const Dashboard = ({ hasLoggedIn, user }) => {
   }, []);
 
   return (
-    <section className="bg-whiteColor min-h-screen">
-      <DashboardHeader />
-      <DashboardBody />
-    </section>
+    <>
+      <Head>
+        <title>Dashboard | JobPortal</title>
+      </Head>
+      <section className="bg-whiteColor min-h-screen">
+        <DashboardHeader />
+        <DashboardBody />
+      </section>
+    </>
   );
 };
 

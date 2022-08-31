@@ -20,4 +20,5 @@ pin
 bookmark
 
 
-
+************ BUG **************
+Cannot read properties of undefined (reading 'createReadStream') because input has Upload and cover_image has url and cloud_id insted of Upload type

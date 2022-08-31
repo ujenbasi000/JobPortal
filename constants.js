@@ -13,6 +13,7 @@ const MESSAGES = {
 
   foundPosts: "Post fetched successful",
   jobPostCreated: "Post created Successful",
+  projectUpdated: "Project Updated Successful",
 };
 
 module.exports = { MESSAGES };

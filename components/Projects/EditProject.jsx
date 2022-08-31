@@ -1,20 +1,41 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useState } from "react";
 import { toast } from "react-toastify";
+import { UPDATE_PROJECT } from "../../pages/gql";
 import {
   handleImage,
   handleInputs,
   handleTagChange,
 } from "../../pages/utils/handlers";
+import { useMutation } from "@apollo/client";
+import { getCookies } from "cookies-next";
+import { useRouter } from "next/router";
 
 const EditProject = ({ details }) => {
+  const router = useRouter();
+
   const [data, setData] = useState(details);
   const [cover_preview, setCoverPreview] = useState("");
   const [pictures_preview, setPicturesPreview] = useState([]);
+  const [updateProjectMutation] = useMutation(UPDATE_PROJECT);
 
-  const editProjectSubmit = (e) => {
+  const editProjectSubmit = async (e) => {
     e.preventDefault();
-    console.log({ data });
+    const { __typename, ...others } = data;
+    const { data: response } = await updateProjectMutation({
+      variables: {
+        input: { ...others, images: [...others.images] },
+      },
+      context: {
+        headers: {
+          authorization: `Bearer ${getCookies("token").token}`,
+        },
+      },
+    });
+    if (response?.updateProject?.success) {
+      toast.success("Project updated successfully");
+      router.push("/dashboard/projects");
+    }
   };
 
   const removeTag = (index) => {
@@ -191,7 +212,7 @@ const EditProject = ({ details }) => {
           </div>
           <div className="mb-8">
             <label
-              htmlFor="name"
+              htmlFor="images"
               className="text-2xl font-semibold text-black mb-1 block"
             >
               Pictures
@@ -202,13 +223,12 @@ const EditProject = ({ details }) => {
             </p>
             <input
               type="file"
-              name="pictures"
+              name="images"
               multiple
               hidden
-              id="pictures"
+              id="images"
               accept="image/*"
               onChange={(e) => {
-                console.log([...e.target.files].length);
                 if ([...e.target.files].length > 5) {
                   toast.error(
                     `Please upload upto 5 images. ${

@@ -8,7 +8,6 @@ import Head from "next/head";
 
 const ProjectEdit = ({ user, hasLoggedIn, projectData }) => {
   const { setUser, setHasLoggedIn } = useContextHook();
-  console.log(projectData);
 
   useEffect(() => {
     setUser(user);

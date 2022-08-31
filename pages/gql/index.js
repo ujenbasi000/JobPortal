@@ -120,8 +120,38 @@ const GET_SINGLE_PROJECT = gql`
         _id
         name
         tagline
+        problem
+        challenges
         technologies
+        links
+        demo_video {
+          url
+          cloud_id
+        }
+        cover_image {
+          url
+          cloud_id
+        }
+        images {
+          url
+          cloud_id
+        }
+        logo {
+          url
+          cloud_id
+        }
+        platform
       }
+    }
+  }
+`;
+
+const UPDATE_PROJECT = gql`
+  mutation UPDATE_PROJECT($input: CreateProjectInput!) {
+    updateProject(input: $input) {
+      data
+      message
+      success
     }
   }
 `;
@@ -140,4 +170,6 @@ module.exports = {
 
   CREATE_PROJECT,
   GET_SINGLE_PROJECT,
+
+  UPDATE_PROJECT,
 };

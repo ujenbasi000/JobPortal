@@ -155,8 +155,8 @@ const typeDefs = gql`
   }
 
   input DateInput {
-    month: String!
-    year: String!
+    month: String
+    year: String
   }
 
   type File {
@@ -165,8 +165,8 @@ const typeDefs = gql`
   }
 
   input FileInput {
-    url: String!
-    cloud_id: String!
+    url: String
+    cloud_id: String
   }
 
   input UserInput {
@@ -223,16 +223,17 @@ const typeDefs = gql`
   }
 
   input CreateProjectInput {
+    _id: String
     name: String!
-    tagline: [String!]
+    tagline: String
     problem: String
     challenges: String
-    technologies: [String!]
-    links: [String!]
-    demo_video: FileInput
-    cover_image: FileInput
-    images: [FileInput!]
-    logo: FileInput
+    technologies: [String]
+    links: [String]
+    demo_video: Upload
+    cover_image: Upload
+    images: [Upload]
+    logo: Upload
     platform: [String!]
   }
 
@@ -288,6 +289,7 @@ const typeDefs = gql`
     updateUser(input: UserInput!): BooleanResponse!
 
     createProject(input: CreateProjectInput!): CreateProjectResponse!
+    updateProject(input: CreateProjectInput!): CreateProjectResponse!
 
     # @company_owner
     registerOwner(input: RegisterCompanyInput!): BooleanResponse!
